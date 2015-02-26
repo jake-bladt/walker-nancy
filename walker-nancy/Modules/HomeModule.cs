@@ -11,7 +11,19 @@ namespace Walker.Nancy.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ => View["Index"];
+            Get["/"] = _ =>
+            {
+                if (null == Context.CurrentUser)
+                {
+                    return Response.AsRedirect("/newuser");
+                }
+                else
+                {
+                    return View["Index"];
+                }
+            };
+
+            Get["/newuser"] = _ => View["NewUser"];
         }
     }
 }
