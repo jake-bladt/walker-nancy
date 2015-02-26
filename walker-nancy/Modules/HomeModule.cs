@@ -11,7 +11,7 @@ namespace Walker.Nancy.Modules
     {
         public HomeModule()
         {
-            Get["/"] = prms => View["Index"];
+            Get["/"] = _ => View["Index"];
         }
     }
 }
